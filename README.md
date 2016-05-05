@@ -65,3 +65,71 @@ Looks like this:
 Also check out the [flappy bird example](http://widdersh.in/cycle-canvas).
 
 You can find the source for flappy bird [here](https://github.com/Widdershin/cycle-canvas/tree/master/examples/flappy-bird).
+
+## API
+
+#### Drawing shapes and text
+
+- [`rect`](#rect)
+- [`line`](#line)
+- [`text`](#text)
+
+
+#### Transformations
+- [`translate`](#translate)
+- [`rotate`](#rotate)
+- [`scale`](#scale)
+
+### <a id="rect"></a> `rect(options = {})`
+
+Draws a rectangle given an object containing options.
+
+#### options:
+
+- `x: number` The x axis for the starting point
+- `y: number` The y axis for the starting point
+- `width: number` The rectangles width
+- `heigh: number` The rectangles height
+- `draw: array` List of drawing operation objects. Current supported operations are fill, stroke and clear.
+
+#### Example:
+```js
+// Draws a filled rectangle with a width/height of 100
+// at postion 10,10. The fill color is #CCCCCC
+line({
+	x: 10,
+	y: 10,
+	width: 100,
+	height: 100,
+	draw: [
+		{fill: '#CCCCCC'}
+	]
+})
+```
+
+### <a id="line"></a> `line(options = {})`
+
+Draw line given an object containing options.
+
+#### options:
+
+- `x: number` The x axis for the starting point
+- `y: number` The y axis for the starting point
+- `width: number` The rectangles width
+- `heigh: number` The rectangles height
+- `draw: array`
+
+#### Example:
+```js
+// Draws a filled rectangle with a width/height of 100
+// at postion 10,10. The fill color is #CCCCCC
+line({
+	x: 10,
+	y: 10,
+	width: 100,
+	height: 100,
+	draw: [
+		{fill: '#CCCCCC'}
+	]
+})
+```
