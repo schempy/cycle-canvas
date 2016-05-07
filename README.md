@@ -86,19 +86,17 @@ Draws a rectangle given an object containing options.
 
 #### options:
 
-- `x: number` The x axis for the starting point
-- `y: number` The y axis for the starting point
-- `width: number` The rectangles width
-- `heigh: number` The rectangles height
+- `x: number` The x axis for the starting point.
+- `y: number` The y axis for the starting point.
+- `width: number` The rectangles width.
+- `heigh: number` The rectangles height.
 - `draw: array` List of drawing operation objects. Current supported operations:
-	- `fill: string` The color or style to use inside the rectangle. Default is *black #000*
-	- `stroke: string` The color or style to use as the stroke style. Default is *black #000*
+	- `fill: string` The color or style to use inside the rectangle. Default is *black #000*.
+	- `stroke: string` The color or style to use as the stroke style. Default is *black #000*.
 	- `clear` Sets all pixels in the rectangle to transparent.
 
 #### Example:
 ```js
-// Draws a filled rectangle with a width/height of 100
-// at coordinates 10,10. The fill color is #CCCCCC
 rect({
 	x: 10,
 	y: 10,
@@ -116,22 +114,31 @@ Draw line given an object containing options.
 
 #### options:
 
-- `x: number` The x axis for the starting point
-- `y: number` The y axis for the starting point
-- `width: number` The rectangles width
-- `heigh: number` The rectangles height
-- `draw: array`
+- `x: number` The x axis for the starting point.
+- `y: number` The y axis for the starting point.
+- `style: object` The style properties. 
+	- `lineWidth: number` The width of the line. Default is *1*.
+	- `lineCap: string` The end point of the line. Default is *butt*. Possible values are *butt*, *round* and *square*.
+	- `lineJoin: string` The type of corner created when two lines meet. Default is *miter*. Possible values are *miter*, *round* and *bevel*.
+	- `strokeStyle: string` The color or style to use as the stroke style. Default is *black #000*.
+	- `lineDash: array` A list of numbers that specifies the line dash pattern.
+- `points: array` List of point objects that specify the x/y coordinates for each point.
 
 #### Example:
 ```js
-// Draws a line
 line({
 	x: 10,
 	y: 10,
-	width: 100,
-	height: 100,
-	draw: [
-		{fill: '#CCCCCC'}
+	style: {
+		lineWidth: 2,
+		lineCap: 'square',
+		strokeStyle: '#CCCCCC'
+	},
+	points: [
+		{x: 10, y: 10},
+		{x: 10, y: 20},
+		{x: 20, y: 10},
+		{x: 10, y: 10}
 	]
 })
 ```
@@ -142,18 +149,16 @@ Draws text given an object containing options.
 
 #### options:
 
-- `x: number` The x axis for the starting point
-- `y: number` The y axis for the starting point
-- `value: string` The text to draw
+- `x: number` The x axis for the starting point.
+- `y: number` The y axis for the starting point.
+- `value: string` The text to draw.
 - `font: string` The text style. Uses same syntax  as the [CSS font](https://developer.mozilla.org/en-US/docs/Web/CSS/font) property.
 - `draw: array` List of drawing operations objects. Current supported operations:
-	- `fill: string` The color or style to fill the text. Default is *black #000*
-	- `stroke: string`The color or style to use as the stroke style. Default is *black #000*
+	- `fill: string` The color or style to fill the text. Default is *black #000*.
+	- `stroke: string`The color or style to use as the stroke style. Default is *black #000*.
 
 #### Example:
 ```js
-// Draws text, 'Hell World!' in 18pt. Arial, at coordinates 10,10.
-// The fill color is black.
 text({
 	x: 10,
 	y: 10,
