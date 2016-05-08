@@ -95,7 +95,7 @@ Draws a rectangle given an object containing drawing parameters.
 - `draw: array` List of drawing operation objects.
 	- `fill: string` The color or style to use inside the rectangle. Default is *black #000*.
 	- `stroke: string` The color or style to use as the stroke style. Default is *black #000*.
-	- `clear` Sets all pixels in the rectangle to transparent.
+	- `clear: boolean` Sets all pixels in the rectangle to transparent.
 - `children: array` List of child drawing shapes or text. This property is **optional**.
 
 #### Example:
