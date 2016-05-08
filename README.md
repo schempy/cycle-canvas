@@ -66,7 +66,7 @@ Also check out the [flappy bird example](http://widdersh.in/cycle-canvas).
 
 You can find the source for flappy bird [here](https://github.com/Widdershin/cycle-canvas/tree/master/examples/flappy-bird).
 
-## API
+##API
 
 #### Drawing shapes and text
 
@@ -80,20 +80,23 @@ You can find the source for flappy bird [here](https://github.com/Widdershin/cyc
 - [`rotate`](#rotate)
 - [`scale`](#scale)
 
-### <a id="rect"></a> `rect(options = {})`
+## Drawing shapes and text
 
-Draws a rectangle given an object containing options.
+### <a id="rect"></a> `rect(params = {})`
 
-#### options:
+Draws a rectangle given an object containing drawing parameters.
+
+#### params {}:
 
 - `x: number` The x axis for the starting point.
 - `y: number` The y axis for the starting point.
 - `width: number` The rectangles width.
 - `heigh: number` The rectangles height.
-- `draw: array` List of drawing operation objects. Current supported operations:
+- `draw: array` List of drawing operation objects.
 	- `fill: string` The color or style to use inside the rectangle. Default is *black #000*.
 	- `stroke: string` The color or style to use as the stroke style. Default is *black #000*.
 	- `clear` Sets all pixels in the rectangle to transparent.
+- `children: array` List of child drawing shapes or text. This property is **optional**.
 
 #### Example:
 ```js
@@ -103,16 +106,27 @@ rect({
 	width: 100,
 	height: 100,
 	draw: [
-		{fill: '#CCCCCC'}
+		{fill: 'purple'}
+	],
+	children: [
+		rect({
+			x: 20,
+			y: 20,
+			width: 50,
+			height: 50,
+			draw: [
+				{fill: 'blue'}
+			]
+		})
 	]
 })
 ```
 
-### <a id="line"></a> `line(options = {})`
+### <a id="line"></a> `line(params = {})`
 
-Draw line given an object containing options.
+Draws line(s) given an object containing drawing parameters.
 
-#### options:
+#### params {}:
 
 - `x: number` The x axis for the starting point.
 - `y: number` The y axis for the starting point.
@@ -123,6 +137,7 @@ Draw line given an object containing options.
 	- `strokeStyle: string` The color or style to use as the stroke style. Default is *black #000*.
 	- `lineDash: array` A list of numbers that specifies the line dash pattern.
 - `points: array` List of point objects that specify the x/y coordinates for each point.
+- `children: array` List of child drawing shapes or text. This property is **optional**.
 
 #### Example:
 ```js
@@ -145,17 +160,18 @@ line({
 
 ### <a id="text"></a> `text(options = {})`
 
-Draws text given an object containing options.
+Draws text given an object containing drawing parameters.
 
-#### options:
+#### params {}:
 
 - `x: number` The x axis for the starting point.
 - `y: number` The y axis for the starting point.
 - `value: string` The text to draw.
 - `font: string` The text style. Uses same syntax  as the [CSS font](https://developer.mozilla.org/en-US/docs/Web/CSS/font) property.
-- `draw: array` List of drawing operations objects. Current supported operations:
+- `draw: array` List of drawing operations objects.
 	- `fill: string` The color or style to fill the text. Default is *black #000*.
 	- `stroke: string`The color or style to use as the stroke style. Default is *black #000*.
+- `children: array` List of child drawing shapes or text. This property is **optional**.
 
 #### Example:
 ```js
@@ -165,7 +181,65 @@ text({
 	value: 'Hello World!',
 	font: '18pt Arial',
 	draw: [
-		{fill: '#000000'}
+		{fill: 'white'}
 	]
 })
 ```
+
+##Transformations
+Transformations are added as attributes to drawing shapes and text. 
+
+### <a id="translate"></a> `translate: {x: number, y: number}`
+
+Moves the canvas origin to a different point.
+
+#### Example:
+```js
+	rect({
+		translate: {x: 10, y: 10},
+		x: 100,
+		y: 100,
+		width: 150,
+		height: 150,
+		draw: [
+			{fill: 'purple'}
+		]
+	})
+```
+
+### <a id="rotate"></a> `rotate: number`
+
+Roate the canvas around the current origin.
+
+#### Example:
+```js
+	rect({
+		rotate: (20*Math.PI/180),
+		x: 10,
+		y: 10,
+		width: 150,
+		height: 150,
+		draw: [
+			{fill: 'purple'}
+		]
+	})
+```
+
+### <a id="scale"></a> `scale: {x: number, y: number}`
+
+Scales the drawing bigger or smaller.
+
+#### Example:
+```js
+	rect({
+		scale: {x: 2, y: 2},
+		x: 10,
+		y: 10,
+		width: 150,
+		height: 150,
+		draw: [
+			{fill: 'purple'}
+		]
+	})
+```
+
